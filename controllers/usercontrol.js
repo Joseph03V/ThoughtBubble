@@ -4,7 +4,7 @@ const userController = {
     getAllUsers(req,res) {
         User.find({})
         .sort({_id:-1})
-        .them((dbUserData) => res.json(dbUserData))
+        .then((dbUserData) => res.json(dbUserData))
         .catch((err) => {
             console.log(err)
             res.status(500).json(err)
@@ -18,7 +18,7 @@ const userController = {
             path: "friends",
         })
         .populate({
-            psth: "thoughts",
+            path: "thoughts",
         })
         .then((dbUserData) => {
             if (!dbUserData) {
@@ -40,15 +40,18 @@ const userController = {
     },
 
     updateUser({params,body}, res) {
-        User.findOneAndUpdate({_id}, body, {
+        User.findOneAndUpdate({_id:params.userId}, body, {
             new: true,
             runValidators: true,
         })
         .then((dbUserData) => {
             if (!dbUserData) {
-                res.status(400).json({message: "Invalid ID!"})
+                res.status(404).json({message: "Invalid ID!"})
                 return
             }
+            res.status(dbUserData)
+        })
+        .catch((err) => {
             res.status(400).json(err)
         })
     },
