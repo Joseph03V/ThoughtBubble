@@ -12,9 +12,6 @@ const thoughtController = {
 
     getThoughtById({params},res) {
         Thought.findOne({_id: params.thoughtId})
-        .populate({
-            path: "thoughts",
-        })
         .then((dbUserData) => {
             if (!dbUserData) {
                 res.status(404).json({message: "Invalid ID!"})
@@ -62,7 +59,9 @@ const thoughtController = {
             }
             res.json(dbUserData)
         })
-        .catch((err) => res.status(400).json(err))
+        .catch((err) => {
+            res.status(400).json(err)
+        })
     },
 
     removeThought({params},res) {
