@@ -1,7 +1,7 @@
 # ThoughtBubble
 
 ## Description
-This is a social media server that tracks and connects users to their thoughts. It allows users to add reactin to other thoughts, and also add other users as friends.Since sometimes things happen, there is also an option to remove friends or remove thoughts/reactions. This server uses Mongo as a database, and express for routing.
+This is a social media server that tracks and connects users to their thoughts. It allows users to add reactions to other thoughts, and also add other users as friends.Since sometimes things happen, there is also an option to remove friends or remove thoughts/reactions. This server uses Mongo as a database, and express for routing.
 
 ## Instalation
 To install this server all you have to do is, fork my repository. Then in a terminal do a "npm install". Once that is completed all you have to do is type "npm run start" in the terminal. This starts up the server and allows you to start using the routes to fill in your data.
